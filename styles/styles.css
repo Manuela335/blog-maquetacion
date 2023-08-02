@@ -1,0 +1,54 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 200px 1fr; /* Ancho fijo para el encabezado y la barra lateral, sección principal ocupa el espacio restante */
+    grid-template-rows: auto;
+    grid-template-areas: "header header" "sidebar main";
+    min-height: 100vh; /* Mínimo alto para cubrir el contenido completo de la pantalla */
+}
+
+.header {
+    grid-area: header;
+    background-color: #e32d2d;
+    color: #ffffff;
+    padding: 1rem;
+}
+
+.sidebar {
+    grid-area: sidebar;
+    background-color: #1bb58c;
+    padding: 1rem;
+}
+
+.main-content {
+    grid-area: main;
+    padding: 1rem;
+}
+
+/* Estilos para hacer el diseño responsive */
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr; /* Cambiamos a una sola columna para pantallas pequeñas */
+        grid-template-areas:
+            "header"
+            "main"
+            "sidebar";
+    }
+
+    .header,
+    .sidebar {
+        grid-column: 1 / -1; /* Hacer que el encabezado y la barra lateral ocupen todo el ancho */
+    }
+
+    .header,
+    .sidebar,
+    .main-content {
+        padding: 1rem;
+    }
+}
+
